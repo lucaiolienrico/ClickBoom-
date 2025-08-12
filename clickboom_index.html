@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ClickBoom — Offerte Veloci</title>
+    <meta name="description" content="Solo qui trovi le offerte più calde del momento! Clicca, approfitta e porta a casa il meglio… ma fallo in fretta: il tempo sta per scadere!" />
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="ClickBoom — Offerte Veloci" />
+    <meta property="og:description" content="Solo qui trovi le offerte più calde del momento! Clicca, approfitta e porta a casa il meglio… ma fallo in fretta: il tempo sta per scadere!" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#000000" />
+    <style>
+        :root{
+            --accent1: #ff0050;
+            --accent2: #00f2ea;
+            --bg: #000;
+            --card: #0b0b0b;
+            --muted: #bdbdbd;
+        }
+        html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:#fff; -webkit-font-smoothing:antialiased;}
+        .container{max-width:900px;margin:0 auto;padding:20px;}
+        header{position:sticky;top:0;background:linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.6));backdrop-filter:blur(4px);padding:12px 0;z-index:30;}
+        nav{display:flex;gap:14px;justify-content:center;align-items:center;}
+        nav a{color:#fff;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px;transition:background .18s;}
+        nav a:hover{background:rgba(255,0,80,0.12);}
+        .hero{padding:40px 16px;text-align:center;}
+        .brand{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:12px;}
+        .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,0.6);}
+        h1{margin:8px 0;font-size:1.6rem;color:var(--accent1);letter-spacing:0.2px;}
+        p.lead{margin:0 auto;max-width:740px;color:var(--muted);font-size:1rem;}
+        .cta-row{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+        .btn{display:inline-block;padding:14px 22px;border-radius:999px;text-decoration:none;font-weight:700;background:linear-gradient(45deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.45);transition:transform .14s ease}
+        .btn:active{transform:translateY(1px)}
+        section{padding:28px 16px;}
+        .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:12px;}
+        .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);text-align:center;}
+        .card h3{margin:6px 0;font-size:1.05rem;color:var(--accent2);}
+        .aff-list{display:flex;flex-direction:column;gap:10px;align-items:center;}
+        .aff-item{width:100%;max-width:520px;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,0,80,0.04), rgba(0,242,234,0.02));border:1px solid rgba(255,255,255,0.02);}
+        .aff-item .left{display:flex;gap:12px;align-items:center;}
+        .aff-item .thumb{width:56px;height:56px;border-radius:10px;background:#111;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent2);}
+        .aff-item .meta{text-align:left;}
+        .aff-item .meta .title{font-weight:700;font-size:0.98rem;}
+        .aff-item .meta .desc{font-size:0.9rem;color:var(--muted);margin-top:4px;}
+        .aff-item .buy{display:inline-block;padding:10px 14px;border-radius:999px;text-decoration:none;background:var(--accent1);color:#fff;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,0.45);}
+        #countdown{margin-top:10px;font-weight:700;color:var(--accent2);font-size:1rem;}
+        form{max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
+        input,textarea{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;outline:none;font-size:1rem;}
+        input::placeholder,textarea::placeholder{color:#9a9a9a}
+        footer{padding:18px;text-align:center;color:#9a9a9a;font-size:0.88rem;}
+        /* fixed buy button */
+        .fixed-buy{position:fixed;right:18px;bottom:18px;padding:14px 18px;border-radius:999px;background:linear-gradient(45deg,var(--accent1),var(--accent2));color:#000;font-weight:900;text-decoration:none;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,0.6);}
+        @media(min-width:720px){
+            .grid{grid-template-columns:repeat(2,1fr);}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#social">Social</a>
+                <a href="#affiliati">Offerte</a>
+                <a href="#contact">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home" class="hero">
+        <div class="container">
+            <div class="brand">
+                <div class="logo">CB</div>
+            </div>
+            <h1>Solo qui le offerte più calde del momento!</h1>
+            <p class="lead">Clicca, approfitta e porta a casa il meglio… ma fallo in fretta: il tempo sta per scadere! Perfetto per chi arriva da TikTok — mobile first, rapido e senza fronzoli.</p>
+
+            <div class="cta-row">
+                <a class="btn" href="#affiliati">Scopri le offerte</a>
+                <a class="btn" href="#contact">Contattami</a>
+            </div>
+        </div>
+    </main>
+
+    <section id="social">
+        <div class="container">
+            <div class="card">
+                <h3>Seguimi sui social</h3>
+                <p style="color:var(--muted);margin:6px 0 12px;">Entra nella community per sconti esclusivi e anteprime.</p>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                    <a class="btn" href="https://tiktok.com/@tuonome" target="_blank" rel="noopener">TikTok</a>
+                    <a class="btn" href="https://instagram.com/tuonome" target="_blank" rel="noopener">Instagram</a>
+                    <a class="btn" href="https://facebook.com/tuonome" target="_blank" rel="noopener">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="affiliati">
+        <div class="container">
+            <div class="card">
+                <h3>Offerte & Link Affiliati</h3>
+                <p style="color:var(--muted);margin:6px 0 12px;">Link diretti, descrizioni chiare e pulsanti grandi per comprare in un tap.</p>
+
+                <div class="aff-list" role="list">
+                    <div class="aff-item" role="listitem">
+                        <div class="left">
+                            <div class="thumb">1</div>
+                            <div class="meta">
+                                <div class="title">🔥 Offerta 1 — Nome Prodotto</div>
+                                <div class="desc">Breve frase che evidenzia il vantaggio (es. -20% + spedizione gratuita)</div>
+                            </div>
+                        </div>
+                        <a class="buy" href="https://link-affiliazione-1.com" target="_blank" rel="noopener">Acquista</a>
+                    </div>
+
+                    <div class="aff-item" role="listitem">
+                        <div class="left">
+                            <div class="thumb">2</div>
+                            <div class="meta">
+                                <div class="title">💎 Offerta 2 — Nome Prodotto</div>
+                                <div class="desc">Breve frase di supporto per convincere al click.</div>
+                            </div>
+                        </div>
+                        <a class="buy" href="https://link-affiliazione-2.com" target="_blank" rel="noopener">Acquista</a>
+                    </div>
+
+                    <div class="aff-item" role="listitem">
+                        <div class="left">
+                            <div class="thumb">3</div>
+                            <div class="meta">
+                                <div class="title">⚡ Offerta 3 — Nome Prodotto</div>
+                                <div class="desc">Una proposta speciale con CTA chiara.</div>
+                            </div>
+                        </div>
+                        <a class="buy" href="https://link-affiliazione-3.com" target="_blank" rel="noopener">Acquista</a>
+                    </div>
+                </div>
+
+                <div id="countdown" aria-live="polite">⏳ Caricamento countdown...</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="card">
+                <h3>Contattami</h3>
+                <p style="color:var(--muted);margin:6px 0 12px;">Hai domande o vuoi collaborare? Scrivimi qui.</p>
+                <form id="contactForm" action="mailto:tuamail@example.com" method="post" enctype="text/plain">
+                    <input name="name" type="text" placeholder="Il tuo nome" required />
+                    <input name="email" type="email" placeholder="La tua email" required />
+                    <textarea name="message" rows="4" placeholder="Il tuo messaggio" required></textarea>
+                    <button type="submit" class="btn">Invia Messaggio</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <small>© 2025 ClickBoom • Affiliazioni: alcuni link sono affiliati. Leggi le nostre condizioni prima di acquistare.</small>
+        </div>
+    </footer>
+
+    <!-- fixed buy button -->
+    <a class="fixed-buy" href="https://link-affiliazione-diretta.com" target="_blank" rel="noopener">ACQUISTA ORA</a>
+
+    <script>
+        // Countdown di 24 ore (resetta ogni volta che si carica la pagina)
+        (function(){
+            const el = document.getElementById('countdown');
+            const deadline = Date.now() + 24*60*60*1000; // 24 ore da ora
+            const update = () => {
+                const now = Date.now();
+                const d = deadline - now;
+                if (d <= 0) { el.textContent = 'Offerta scaduta!'; return; }
+                const hrs = Math.floor(d / (1000*60*60));
+                const mins = Math.floor((d % (1000*60*60)) / (1000*60));
+                const secs = Math.floor((d % (1000*60)) / 1000);
+                el.textContent = `⏳ Offerta valida per: ${hrs}h ${mins}m ${secs}s`;
+            };
+            update();
+            setInterval(update,1000);
+        })();
+
+        // Optional: simple analytics placeholder (no external calls)
+        (function(){
+            window.__cb = window.__cb || { clicks: 0 };
+            document.addEventListener('click', function(e){
+                if(e.target && (e.target.matches('.buy') || e.target.matches('.fixed-buy') || e.target.closest('.buy'))){
+                    window.__cb.clicks++;
+                    // qui potresti inviare dati a un endpoint se necessario
+                    // fetch('/track', {method:'POST', body:JSON.stringify({type:'click',time:Date.now()})})
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
